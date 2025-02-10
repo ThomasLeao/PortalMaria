@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalMaria", "PortalMaria\PortalMaria.csproj", "{86771B2B-70A2-456A-AD7C-2F7AF015157E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{7E038774-2BAA-479C-8760-071E20CEBA32}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86771B2B-70A2-456A-AD7C-2F7AF015157E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86771B2B-70A2-456A-AD7C-2F7AF015157E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86771B2B-70A2-456A-AD7C-2F7AF015157E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86771B2B-70A2-456A-AD7C-2F7AF015157E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8620D1F-ACCD-4D99-A7FB-803550769AA4}
+	EndGlobalSection
+EndGlobal

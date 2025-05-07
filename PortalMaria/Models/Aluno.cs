@@ -13,11 +13,11 @@ namespace PortalMaria.Models
         public int Idade { get; set; }
 
         [Required]
-        public string Responsavel { get; set; }
+        public string ?Responsavel { get; set; }
 
         [Required]
-        public string Telefone { get; set; }
+        public string ?Telefone { get; set; }
 
-        public string Observacao { get; set; }
+        public string? Observacao { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace PortalMaria.Models
         public int Id { get; set; }
 
         [Required]
-        public string Nome { get; set; }
+        public string? Nome { get; set; }
 
         [Required]
         public int Idade { get; set; }

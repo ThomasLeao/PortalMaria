@@ -1,23 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
-namespace PortalMaria.Models
+namespace PortalMaria.Models;
+
+public partial class Aluno
 {
-    public class Aluno
-    {
-        public int Id { get; set; }
+    public int Id { get; set; }
 
-        [Required]
-        public string? Nome { get; set; }
+    public string Nome { get; set; } = null!;
 
-        [Required]
-        public int Idade { get; set; }
+    public int Idade { get; set; }
 
-        [Required]
-        public string ?Responsavel { get; set; }
+    public string Responsavel { get; set; } = null!;
 
-        [Required]
-        public string ?Telefone { get; set; }
+    public string Telefone { get; set; } = null!;
 
-        public string? Observacao { get; set; }
-    }
+    public string? Observacao { get; set; }
+
+    public virtual ICollection<HorarioAluno> HorarioAlunos { get; set; } = new List<HorarioAluno>();
 }

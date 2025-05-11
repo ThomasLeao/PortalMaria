@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PortalMaria.Models;
 using PortalMaria.Services.Interfaces;
 
@@ -7,10 +8,12 @@ namespace PortalMaria.Controllers
     public class AlunoController : Controller
     {
         private readonly IAlunoService _alunoService;
+        private readonly IHorarioAlunoService _horarioAluno;
 
-        public AlunoController(IAlunoService alunoService)
+        public AlunoController(IAlunoService alunoService, IHorarioAlunoService horarioAluno)
         {
             _alunoService = alunoService;
+            _horarioAluno = horarioAluno;
         }
 
         public async Task<IActionResult> Index(string search)
@@ -31,8 +34,19 @@ namespace PortalMaria.Controllers
             if (ModelState.IsValid) 
             {
                 await _alunoService.CreateAsync(aluno);
+
+                var horario = new HorarioAluno
+                {
+                    IdAluno = aluno.Id,
+                    NomeAluno = aluno.Nome,
+                    CriadoEm = DateTime.Now,
+                    Status = "Ativo"
+                };
+                await _horarioAluno.CreateAsync(horario);
+
                 return RedirectToAction(nameof(Index));
             }
+            
             return View(aluno);
         }
 
@@ -74,6 +88,8 @@ namespace PortalMaria.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+
+            await _horarioAluno.DeleteAsync(id);
             await _alunoService.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }

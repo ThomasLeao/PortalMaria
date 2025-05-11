@@ -11,23 +11,12 @@
         <div class="col-md-8 col-lg-6">
             <form asp-action="Edit">
                 <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="IdAluno" />
 
                 <!-- Nome -->
                 <div class="mb-3">
                     <label for="NomeAluno" class="form-label">NomeAluno:</label>
                     <input asp-for="NomeAluno" class="form-control" required />
-                </div>
-
-                <!-- Responsável -->
-                <div class="mb-3">
-                    <label for="Responsavel" class="form-label">Responsável:</label>
-                    <input asp-for="Responsavel" class="form-control" />
-                </div>
-
-                <!-- Telefone -->
-                <div class="mb-3">
-                    <label for="ContatoResponsavel" class="form-label">ContatoResponsavel:</label>
-                    <input asp-for="ContatoResponsavel" type="number" class="form-control" required />
                 </div>
 
                 <!-- Observação -->
@@ -49,6 +38,16 @@
                 <div class="mb-3">
                     <label for="DiaSemana" class="form-label">DiaSemana:</label>
                     <input asp-for="DiaSemana" class="form-control" />
+                    <div class="d-flex flex-wrap gap-2 mb-3">
+                        @foreach (var dia in new[] { "Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom" })
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="DiasSelecionados" value="@dia"
+                                @(Model.DiaSemana?.Contains(dia) == true ? "checked" : "") />
+                                <label class="form-check-label">@dia</label>
+                            </div>
+                        }
+                    </div>
                 </div>
 
                 <div class="mb-3">

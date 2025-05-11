@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PortalMaria.Data;
 using PortalMaria.Models;
 using PortalMaria.Services.Interfaces;
 

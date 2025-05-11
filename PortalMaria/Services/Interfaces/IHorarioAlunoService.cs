@@ -7,5 +7,7 @@ namespace PortalMaria.Services.Interfaces
         Task<List<HorarioAluno>> ListarHorarioAlunos(string search = null);
         Task UpdateAsync(HorarioAluno alunoHoario);
         Task<HorarioAluno> GetByIdAsync(int id);
+        Task CreateAsync(HorarioAluno horarioAluno);
+        Task DeleteAsync(int id);
     }
 }

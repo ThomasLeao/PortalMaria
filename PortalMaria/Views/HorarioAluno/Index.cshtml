@@ -21,12 +21,10 @@
                     <thead class="table-primary">
                         <tr>
                             <th>Nome do Aluno</th>
-                            <th>Responsável</th>
-                            <th>Contato</th>
-                            <th>Data</th>
+                            <th>Data da Modificação</th>
                             <th>Início</th>
                             <th>Fim</th>
-                            <th>Dia</th>
+                            <th>Dias da Semana</th>
                             <th>Matéria</th>
                             <th>Status</th>
                             <th>Presença</th>
@@ -38,8 +36,6 @@
                         {
                             <tr>
                                 <td>@aluno.NomeAluno</td>
-                                <td>@aluno.Responsavel</td>
-                                <td>@aluno.ContatoResponsavel</td>
                                 <td>@(aluno.CriadoEm?.ToString("dd/MM/yyyy"))</td>
                                 <td>@aluno.HorarioInicio?.ToString(@"hh\:mm")</td>
                                 <td>@aluno.HorarioFim?.ToString(@"hh\:mm")</td>

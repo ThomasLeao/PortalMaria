@@ -30,8 +30,9 @@ namespace PortalMaria.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, HorarioAluno alunoHorario)
+        public async Task<IActionResult> Edit(int id, HorarioAluno alunoHorario, string[] DiasSelecionados)
         {
+            alunoHorario.DiaSemana = string.Join(",", DiasSelecionados);
             if (id != alunoHorario.Id) return NotFound();
 
             if (ModelState.IsValid)

@@ -1,25 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PortalMaria.Data;
 using PortalMaria.Models;
+using PortalMaria.Services.Interfaces;
 
 namespace PortalMaria.Controllers
 {
-    public class AlunoController : Controller 
+    public class AlunoController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        public AlunoController(
-            ApplicationDbContext context
-            )
+        private readonly IAlunoService _alunoService;
+
+        public AlunoController(IAlunoService alunoService)
         {
-            _context = context;
+            _alunoService = alunoService;
         }
+
         public async Task<IActionResult> Index(string search)
         {
-            var alunos = from a in _context.Alunos select a;
-            if (!string.IsNullOrEmpty(search))
-            {
-                alunos = alunos.Where(a => a.Nome.Contains(search));
-            }
+            var alunos = await _alunoService.GetAllAsync(search);
             return View(alunos);
         }
 
@@ -28,32 +24,28 @@ namespace PortalMaria.Controllers
             return View();
         }
 
-        // Criar aluno (POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Aluno aluno)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) 
             {
-                _context.Add(aluno);
-                await _context.SaveChangesAsync();
+                await _alunoService.CreateAsync(aluno);
                 return RedirectToAction(nameof(Index));
             }
             return View(aluno);
         }
 
-        // Editar aluno (GET)
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
 
-            var aluno = await _context.Alunos.FindAsync(id);
+            var aluno = await _alunoService.GetByIdAsync(id.Value);
             if (aluno == null) return NotFound();
 
             return View(aluno);
         }
 
-        // Editar aluno (POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Aluno aluno)
@@ -62,35 +54,27 @@ namespace PortalMaria.Controllers
 
             if (ModelState.IsValid)
             {
-                _context.Update(aluno);
-                await _context.SaveChangesAsync();
+                await _alunoService.UpdateAsync(aluno);
                 return RedirectToAction(nameof(Index));
             }
             return View(aluno);
         }
 
-        // Deletar aluno (GET)
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
 
-            var aluno = await _context.Alunos.FindAsync(id);
+            var aluno = await _alunoService.GetByIdAsync(id.Value);
             if (aluno == null) return NotFound();
 
             return View(aluno);
         }
 
-        // Deletar aluno (POST)
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var aluno = await _context.Alunos.FindAsync(id);
-            if (aluno != null)
-            {
-                _context.Alunos.Remove(aluno);
-                await _context.SaveChangesAsync();
-            }
+            await _alunoService.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
     }

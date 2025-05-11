@@ -15,11 +15,20 @@
 
             <!-- Menu de navegação -->
             <div class="list-group">
-                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" asp-controller="Aluno" asp-action="Index">
-                    <i class="bi bi-person-fill"></i> Gerenciar Alunos
-                    <span class="badge bg-primary rounded-pill">Novo</span>
-                </a>
-                <!-- Adicione mais opções se necessário -->
+                <div class="mb-3">
+                    <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                       asp-controller="Aluno" asp-action="Index">
+                        <i class="bi bi-person-fill"></i> Gerenciar Alunos
+                        <span class="badge bg-primary rounded-pill">Novo</span>
+                    </a>
+                </div>
+                <div class="mb-3">
+                    <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                       asp-controller="HorarioAluno" asp-action="Index">
+                        <i class="bi bi-person-fill"></i> Horários Alunos
+                        <span class="badge bg-primary rounded-pill">Novo</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

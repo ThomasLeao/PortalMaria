@@ -1,0 +1,78 @@
+﻿@model HorarioAluno
+
+@{
+    ViewData["Title"] = "Editar Aluno";
+}
+
+<h2 class="text-center my-4">Editar Aluno</h2>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <form asp-action="Edit">
+                <input type="hidden" asp-for="Id" />
+
+                <!-- Nome -->
+                <div class="mb-3">
+                    <label for="NomeAluno" class="form-label">NomeAluno:</label>
+                    <input asp-for="NomeAluno" class="form-control" required />
+                </div>
+
+                <!-- Responsável -->
+                <div class="mb-3">
+                    <label for="Responsavel" class="form-label">Responsável:</label>
+                    <input asp-for="Responsavel" class="form-control" />
+                </div>
+
+                <!-- Telefone -->
+                <div class="mb-3">
+                    <label for="ContatoResponsavel" class="form-label">ContatoResponsavel:</label>
+                    <input asp-for="ContatoResponsavel" type="number" class="form-control" required />
+                </div>
+
+                <!-- Observação -->
+                <div class="mb-3">
+                    <label for="CriadoEm" class="form-label">CriadoEm:</label>
+                    <input asp-for="CriadoEm" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="HorarioInicio" class="form-label">HorarioInicio:</label>
+                    <input asp-for="HorarioInicio" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="HorarioFim" class="form-label">HorarioFim:</label>
+                    <input asp-for="HorarioFim" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="DiaSemana" class="form-label">DiaSemana:</label>
+                    <input asp-for="DiaSemana" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="Materias" class="form-label">Materias:</label>
+                    <input asp-for="Materias" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="Status" class="form-label">Status:</label>
+                    <input asp-for="Status" class="form-control" />
+                </div>
+
+                <!-- Botão Salvar -->
+                <button type="submit" class="btn btn-success w-100 w-md-auto">Salvar</button>
+            </form>
+
+            <!-- Botão Voltar -->
+            <div class="mt-3 text-center">
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+}

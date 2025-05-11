@@ -1,5 +1,7 @@
 using PortalMaria.Data;
 using Microsoft.EntityFrameworkCore;
+using PortalMaria.Services.Implementations;
+using PortalMaria.Services.Interfaces;
 
 namespace PortalMaria
 {
@@ -11,8 +13,9 @@ namespace PortalMaria
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddScoped<IAlunoService, AlunoService>();
+            builder.Services.AddScoped<IHorarioAlunoService, HorarioAlunoService>();
 
 
             var app = builder.Build();
@@ -24,6 +27,7 @@ namespace PortalMaria
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

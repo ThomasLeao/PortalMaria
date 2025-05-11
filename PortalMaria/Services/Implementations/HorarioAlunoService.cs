@@ -15,7 +15,11 @@ namespace PortalMaria.Services.Implementations
 
         public async Task<List<HorarioAluno>> ListarHorarioAlunos(string search = null)
         {
-            var query = _context.HorarioAlunos;
+            var query = _context.HorarioAlunos.AsQueryable();
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(a => a.NomeAluno.Contains(search));
+            }
             return await query.ToListAsync();
         }
         public async Task UpdateAsync(HorarioAluno alunoHoario)

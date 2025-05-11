@@ -43,7 +43,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.DiaSemana)
-                .HasMaxLength(15)
+                .HasMaxLength(200)
                 .IsUnicode(false);
             entity.Property(e => e.Materias)
                 .HasMaxLength(50)

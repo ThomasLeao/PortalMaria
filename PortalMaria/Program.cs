@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using PortalMaria.Models;
 using PortalMaria.Services.Implementations;
 using PortalMaria.Services.Interfaces;
+using DinkToPdf;
+using DinkToPdf.Contracts;
+
 
 namespace PortalMaria
 {
@@ -17,6 +20,7 @@ namespace PortalMaria
             builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddScoped<IAlunoService, AlunoService>();
             builder.Services.AddScoped<IHorarioAlunoService, HorarioAlunoService>();
+            builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
 
             var app = builder.Build();
